@@ -13,4 +13,6 @@ Do more, add real time timers and drive a stepper motor.
 It Moves… Stepper drive is working at 130in/min.
   LittleTest4.asm
   StepperLib.inc
-  
+
+Out of volts at 209 in/min. Next: add some position control.
+  LittleTest5.asm

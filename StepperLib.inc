@@ -9,11 +9,11 @@
 ;
 ; Speed control constants
 ;
-kMaxSpeed	EQU	.34	;a34 = 193.5 in/min
+kMaxSpeed	EQU	.102	;a102 = 209 in/min
 kUseDSTable	EQU	0
 kUseVSTable	EQU	1	;starts at 5.4 in/min
-kUseTable2	EQU	1
-kUseTable5	EQU	0
+kUseTable2	EQU	1	;2000 steps / inch
+kUseTable5	EQU	0	;5000 steps / inch
 ;
 ; Stepper Driver Variables, somewhere in RAM
 ;	cblock
@@ -169,7 +169,7 @@ GetStepTimeLo:
 	RETLW	Low .295
 	RETLW	Low .292
 	RETLW	Low .289
-	RETLW	Low .286
+	RETLW	Low .286	;118/a102/b86 209.8 in/min
 	RETLW	Low .283
 	RETLW	Low .280
 	RETLW	Low .277
