@@ -2,7 +2,7 @@
 ;    LittleTest PIC12F1822 sample project
 ;
 ;    History:
-;
+; LittleTest5   3/16/2015     The stepper is moving fast.
 ; LittleTest4   3/2/2015	The beginnings of motion control.
 ; LittleTest3   2/23/2015	Using the CCP to output pulses
 ; LittleTest2   2/16/2015	ISR blinking LED
