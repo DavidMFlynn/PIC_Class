@@ -1,8 +1,8 @@
 ;====================================================================================================
 ;
 ;   Filename:	TestI2CMaster.asm
-;   Date:	4/23/2015
-;   File Version:	1.0d1
+;   Date:	9/7/2015
+;   File Version:	1.0d2
 ;
 ;    Author:	David M. Flynn
 ;    Company:	Oxford V.U.E., Inc.
@@ -14,6 +14,7 @@
 ;
 ;    History:
 ;
+; 1.0d2  9/7/2015	Multi-Slave support.
 ; 1.0d1  4/23/2015	First code
 ;
 ;====================================================================================================
@@ -161,7 +162,8 @@ DebounceTime	EQU	d'10'
 ;TimerI2C	EQU	Timer1Lo
 ;
 ;
-RX_ELEMENTS	EQU	.8	; number of allowable array elements
+I2C_SlaveCount	EQU	.3
+RX_ELEMENTS	EQU	.4	; number of allowable array elements
 ;Note: only upper 7 bits of address are used
 I2C_ADDRESS	EQU	0x30	; slave address
 BRG_VAL	EQU	0x27	; baud rate setting = 100kHz
@@ -173,8 +175,8 @@ I2C_RX_Init_Val	EQU	0xAA	; value to load into received data array
 ;
 ;
 I2C_Buffers	udata	0xA0
-I2C_ARRAY_TX	RES	RX_ELEMENTS	; array to transmit to master
-I2C_ARRAY_RX 	RES	RX_ELEMENTS	; array to receive from master
+I2C_ARRAY_TX	RES	RX_ELEMENTS*I2C_SlaveCount	; array to transmit to master
+I2C_ARRAY_RX 	RES	RX_ELEMENTS*I2C_SlaveCount	; array to receive from master
 ;
 ;=======================================================================================================
 ;  Common Ram 70-7F same for all banks

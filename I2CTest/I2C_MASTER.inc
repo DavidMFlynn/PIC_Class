@@ -3,8 +3,8 @@
 ; I2C MASTER DRIVER CODE
 ;
 ;    Filename:      I2C MASTER.inc
-;    Date:          4/25/2015
-;    File Version:  1.0.2
+;    Date:          9/7/2015
+;    File Version:  1.0.3
 ;
 ;    Author:        David M. Flynn
 ;    Company:       Oxford V.U.E., Inc.
@@ -16,6 +16,7 @@
 ;
 ;    History:
 ;
+; 1.0.3  9/7/2015	Added multi-Slave.
 ; 1.0.2  4/25/2015	First woring version, single master to single slave, no error checking.
 ; 1.0.1  9/4/2014	Modified for 12F1822
 ; 1.0   11/23/2013	Adapted from AN734C
@@ -93,6 +94,7 @@
 ;
 ;=========================================================================================
 ;
+;I2C_SlaveCount	EQU	.3
 ;RX_ELEMENTS	EQU	.8	; number of allowable array elements
 ;Note: only upper 7 bits of address are used
 ;I2C_ADDRESS	EQU	0x30	; slave address
@@ -102,6 +104,8 @@
 ;
 ;
 ;------------------------------------ variables-------------------------------------------
+;	I2C_Slave_Idx
+;	I2C_Count
 ;
 ;	cblock	0x70									; set up in shared memory for easy access
 ;	INDEX_I2C		; index used to point to array location	
@@ -129,8 +133,11 @@
 ;#Define	I2C_NewRXData	GFlags3,0	; Set by ISR, The new data is here!
 ;#Define	I2C_NewDataToTX	GFlags3,1	; set in main to cause send now
 ;	udata
-;I2C_ARRAY_TX	res	RX_ELEMENTS	; array to transmit to slave
-;I2C_ARRAY_RX	res	RX_ELEMENTS	; array to receive from slave
+;
+; array to transmit to slaves
+;I2C_ARRAY_TX	res	RX_ELEMENTS*I2C_SlaveCount
+; array to receive from slaves
+;I2C_ARRAY_RX	res	RX_ELEMENTS*I2C_SlaveCount	
 ;
 ;
 ;=========================================================================================
@@ -292,7 +299,7 @@ Init_I2C:
 	movlw	high I2C_ARRAY_TX
 	movwf	FSR1H
 ;
-	movlw	RX_ELEMENTS
+	movlw	RX_ELEMENTS*I2C_SlaveCount
 	movwf	INDEX_I2C	;used as count not index
 	movlw	I2C_TX_Init_Val
 Init_I2C_L1	movwf	INDF1
@@ -307,7 +314,7 @@ Init_I2C_L1	movwf	INDF1
 	movlw	high I2C_ARRAY_RX
 	movwf	FSR1H
 ;
-	movlw	RX_ELEMENTS
+	movlw	RX_ELEMENTS*I2C_SlaveCount
 	movwf	INDEX_I2C	;used as count not index
 	movlw	I2C_RX_Init_Val
 Init_I2C_L2	movwf	INDF1
@@ -369,8 +376,8 @@ I2C_Write	btfsc	I2C_TRANS_COMPLETE	; is transmission complete?
 	goto	I2C_Write_TXData	; if so, go start to transmit
 	bcf	I2C_Addr_Pending	; if not, send trans add
 	bsf	I2C_INIT_TRANS_DATA
+	call	I2C_GetSlaveAddr
 	banksel	SSP1BUF
-	movlw	I2C_ADDRESS
 	BCF	WREG,0	; Set R/W* to Write
 	movwf	SSP1BUF
 	goto	I2C_Write_Return
@@ -384,7 +391,7 @@ I2C_Write_TXData	btfss	I2C_TRANS_DATA	; is transmission complete?
 	btfsc	_C	; did a carry occur after subtraction?
 	goto	I2C_Write_1	; if so, array limit reached
 ;
-	LOADFSR1	I2C_ARRAY_TX,INDEX_I2C
+	call	I2C_Set_TX_PTR
 	movf	INDF1,W	; move value into W to load to SSP buffer
 	banksel	SSP1BUF
 	movwf	SSP1BUF	; load SSP buffer
@@ -417,8 +424,8 @@ I2C_READ	btfss	I2C_Addr_Pending	; if not, was read add transmitted to slave?
 ; Send address to slave(s)
 	bcf	I2C_Addr_Pending	; clear bit
 	bsf	I2C_INIT_MSTR_REC	; set bit to get ready next INT
+	call	I2C_GetSlaveAddr
 	banksel	SSP1BUF
-	movlw	I2C_ADDRESS	; transmit read address to slave
 	BSF	WREG,0	; Set R/W* to Read 
 	movwf	SSP1BUF
 	goto	I2C_READ_Return
@@ -439,7 +446,7 @@ I2C_READ_2	btfss	I2C_REC_BYTE	;Was data received?
 	goto	I2C_READ_3	; No
 	bcf	I2C_REC_BYTE
 ;
-	LOADFSR1	I2C_ARRAY_RX,INDEX_I2C
+	call	I2C_Set_RX_PTR
 	banksel	SSP1BUF
 	movf	SSP1BUF,W	; move the contents of the buffer into W
 	movwf 	INDF1	; load INDF1 with data to write
@@ -463,5 +470,69 @@ I2C_READ_End	btfss	I2C_Stop_Asserted
 	bcf	I2C_Read_Seq_Active	; and we are done
 	goto	I2C_READ_Return
 ;
+;=========================================================================================
+; Entry: none
+; Exit: W=SlaveAddress
 ;
+I2C_GetSlaveAddr:
+	BANKSEL	I2C_Slave_Idx
+	movf	I2C_Slave_Idx,W
+	andlw	0x03
+	brw
+	retlw	I2C_ADDRESS
+	retlw	I2C_ADDRESS+2
+	retlw	I2C_ADDRESS+4
+	retlw	I2C_ADDRESS+6
+;
+; Set FSR1 to point to the tx buffer for slave I2C_Slave_Idx
+I2C_Set_TX_PTR:
+	BANKSEL	I2C_Slave_Idx
+	movlw	low I2C_ARRAY_TX
+	movwf	FSR1L
+	movlw	high I2C_ARRAY_TX
+	movwf	FSR1H
+I2C_Set_TX_PTR_E2	movf	INDEX_I2C,W
+	addwf	FSR1L,F
+	clrw
+	addwfc	FSR1H,F
+	movf	I2C_Slave_Idx,W
+	movwf	I2C_Count
+	btfsc	_Z
+	return
+I2C_Set_TX_PTR_L1	movlw	RX_ELEMENTS
+	addwf	FSR1L,F
+	clrw
+	addwfc	FSR1H,F
+	decfsz	I2C_Count,F
+	goto	I2C_Set_TX_PTR_L1
+	return
+;
+; Set FSR1 to point to the rx buffer for slave I2C_Slave_Idx
+I2C_Set_RX_PTR:
+	BANKSEL	I2C_Slave_Idx
+	movlw	low I2C_ARRAY_RX
+	movwf	FSR1L
+	movlw	high I2C_ARRAY_RX
+	movwf	FSR1H
+	goto	I2C_Set_TX_PTR_E2
+;	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
