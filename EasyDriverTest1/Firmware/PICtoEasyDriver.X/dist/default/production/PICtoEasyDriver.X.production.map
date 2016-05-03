@@ -1,0 +1,194 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Mon Dec 14 17:33:21 2015
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_1       code   0x000000    program   0x000006
+                   .org_2       code   0x000004    program   0x0004d6
+                   .cinit    romdata   0x00026f    program   0x000004
+                   .org_3       code   0x000700    program   0x000100
+                   .org_4       code   0x000780    program   0x000100
+                  .idlocs       code   0x008000    program   0x000008
+.config_8007_BUILD/DEFAULT/PRODUCTION/_EXT/16       code   0x008007    program   0x000002
+.config_8008_BUILD/DEFAULT/PRODUCTION/_EXT/16       code   0x008008    program   0x000002
+                   .org_0       code   0x00f000    program   0x000006
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000004    0x000270      
+                            0x000700    0x0007ff      
+                            0x008000    0x008003      
+                            0x008007    0x008008      
+                            0x00f000    0x00f002      
+            889 out of 8455 program addresses used, program memory utilization is 10%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                 ClearRam   0x00002f    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+               ClearRam_2   0x000040    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+              ClearRam_L2   0x000049    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+             Cmd_Home_End   0x0001a9    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+           Cmd_PosAbs_End   0x0001d1    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+        Cmd_PosAbs_PosMov   0x0001ca    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+       Cmd_SetI2CAddr_End   0x000212    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+                CopyToRam   0x00004e    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+             CopyToRam_L1   0x000053    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                 DecTimer   0x000072    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                DecTimer1   0x000071    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                DecTimer2   0x00006f    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                DecTimer3   0x00006d    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                DecTimer4   0x00006b    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+               Delay100uS   0x00008b    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                Delay10uS   0x000089    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                Delay40uS   0x00008d    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                 DelayWuS   0x00008e    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+            DelayWuS_Loop   0x00008f    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                   EERead   0x000093    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                  EEReadW   0x000092    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                  EEWrite   0x00009b    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+              EEWriteLoop   0x0000ad    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                 EEWriteW   0x00009a    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+            GetStepTimeHi   0x000780    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+            GetStepTimeLo   0x000700    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+            I2C_DI_BM_End   0x0001a2    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+           I2C_DI_Dir_End   0x0001e0    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+      I2C_DI_GPIO_DDR_End   0x0001fc    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+      I2C_DI_GPIO_Dat_End   0x00020a    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+        I2C_DI_MaxSpd_End   0x0001e7    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+        I2C_DI_MinSpd_End   0x0001ee    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+       I2C_DI_MoveRel_End   0x0001b2    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+           I2C_DataInturp   0x000191    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+           I2C_DataSender   0x000213    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+        I2C_DataSender_L1   0x000220    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+                  I2C_ISR   0x0000e4    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                 I2C_Idle   0x0000b3    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                I2C_WRITE   0x000116    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                    IRQ_5   0x000023    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+                IRQ_5_End   0x00002b    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+            ISR_MM_DecSpd   0x000261    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+               ISR_MM_Fwd   0x00022e    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+            ISR_MM_GoSlow   0x00026b    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+            ISR_MM_IncSpd   0x000266    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+            ISR_MM_NoMove   0x000238    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+         ISR_MM_StepsToGo   0x000231    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+            ISR_MotorMove   0x000225    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+          ISR_MotorMove_1   0x00024f    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+          ISR_MotorMove_2   0x000251    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+          ISR_MotorMove_3   0x00026d    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+                 Init_I2C   0x0000b7    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+              Init_I2C_L1   0x0000bf    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+              Init_I2C_L2   0x0000c9    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                 MainLoop   0x000181    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+             MoveTest_End   0x000190    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+         NO_MEM_OVERWRITE   0x00013a    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                R_ADDRESS   0x0000eb    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                R_Add_ACK   0x0000f1    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                   R_DATA   0x0000fe    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+              R_Data_NACK   0x000114    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                R_PastEnd   0x00010d    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+               SaveParams   0x00005c    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+            SaveParams_L1   0x000061    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                TMR2_Done   0x00001e    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+                 TMR2_End   0x00001f    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+              TestT1_Zero   0x000086    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+              TestT2_Zero   0x000083    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+              TestT3_Zero   0x000080    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+              TestT4_Zero   0x00007d    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                    W_ACK   0x00011c    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                W_ADDRESS   0x000118    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                   W_DATA   0x00011e    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+              W_Data_Stop   0x000138    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+             _.org_2_00A7   0x0000a7    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                    start   0x00013c    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                TMR2_Done   0x00001e    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+                 TMR2_End   0x00001f    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+                    IRQ_5   0x000023    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+                IRQ_5_End   0x00002b    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+                 ClearRam   0x00002f    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+               ClearRam_2   0x000040    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+              ClearRam_L2   0x000049    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                CopyToRam   0x00004e    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+             CopyToRam_L1   0x000053    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+               SaveParams   0x00005c    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+            SaveParams_L1   0x000061    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                DecTimer4   0x00006b    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                DecTimer3   0x00006d    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                DecTimer2   0x00006f    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                DecTimer1   0x000071    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                 DecTimer   0x000072    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+              TestT4_Zero   0x00007d    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+              TestT3_Zero   0x000080    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+              TestT2_Zero   0x000083    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+              TestT1_Zero   0x000086    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                Delay10uS   0x000089    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+               Delay100uS   0x00008b    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                Delay40uS   0x00008d    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                 DelayWuS   0x00008e    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+            DelayWuS_Loop   0x00008f    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                  EEReadW   0x000092    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                   EERead   0x000093    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                 EEWriteW   0x00009a    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                  EEWrite   0x00009b    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+             _.org_2_00A7   0x0000a7    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+              EEWriteLoop   0x0000ad    program     static /Projects/EasyDriverTest/Firmware/F1847_Common.inc
+                 I2C_Idle   0x0000b3    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                 Init_I2C   0x0000b7    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+              Init_I2C_L1   0x0000bf    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+              Init_I2C_L2   0x0000c9    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                  I2C_ISR   0x0000e4    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                R_ADDRESS   0x0000eb    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                R_Add_ACK   0x0000f1    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                   R_DATA   0x0000fe    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                R_PastEnd   0x00010d    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+              R_Data_NACK   0x000114    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                I2C_WRITE   0x000116    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                W_ADDRESS   0x000118    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                    W_ACK   0x00011c    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                   W_DATA   0x00011e    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+              W_Data_Stop   0x000138    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+         NO_MEM_OVERWRITE   0x00013a    program     static /Projects/EasyDriverTest/Firmware/I2C_SLAVE.inc
+                    start   0x00013c    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+                 MainLoop   0x000181    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+             MoveTest_End   0x000190    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+           I2C_DataInturp   0x000191    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+            I2C_DI_BM_End   0x0001a2    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+             Cmd_Home_End   0x0001a9    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+       I2C_DI_MoveRel_End   0x0001b2    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+        Cmd_PosAbs_PosMov   0x0001ca    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+           Cmd_PosAbs_End   0x0001d1    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+           I2C_DI_Dir_End   0x0001e0    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+        I2C_DI_MaxSpd_End   0x0001e7    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+        I2C_DI_MinSpd_End   0x0001ee    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+      I2C_DI_GPIO_DDR_End   0x0001fc    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+      I2C_DI_GPIO_Dat_End   0x00020a    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+       Cmd_SetI2CAddr_End   0x000212    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+           I2C_DataSender   0x000213    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+        I2C_DataSender_L1   0x000220    program     static /Projects/EasyDriverTest/Firmware/PICtoEasyDriver.asm
+            ISR_MotorMove   0x000225    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+               ISR_MM_Fwd   0x00022e    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+         ISR_MM_StepsToGo   0x000231    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+            ISR_MM_NoMove   0x000238    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+          ISR_MotorMove_1   0x00024f    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+          ISR_MotorMove_2   0x000251    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+            ISR_MM_DecSpd   0x000261    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+            ISR_MM_IncSpd   0x000266    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+            ISR_MM_GoSlow   0x00026b    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+          ISR_MotorMove_3   0x00026d    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+            GetStepTimeLo   0x000700    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+            GetStepTimeHi   0x000780    program     static /Projects/EasyDriverTest/Firmware/StepperLib.inc
+
+
